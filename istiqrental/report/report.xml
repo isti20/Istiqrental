@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="report_kendaraan_xlsx" model="ir.actions.report">
+        <field name="name">Daftar Kendaraan Excel</field>
+        <field name="model">istiqrental.kendaraan</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">istiqrental.report_kendaraan_xlsx</field>
+        <field name="report_file">istiqrental.report_kendaraan_xlsx</field>
+        <field name="binding_model_id" ref="model_istiqrental_kendaraan"/>
+        <field name="binding_type">report</field>
+    </record>
+
+     <record id="report_sewa_xlsx" model="ir.actions.report">
+        <field name="name">Laporan Sewa PDF</field>
+        <field name="model">istiqrental.sewa</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">istiqrental.report_sewa_pdf</field>
+        <field name="report_file">istiqrental.report_sewa_pdf</field>
+        <field name="binding_model_id" ref="model_istiqrental_sewa"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

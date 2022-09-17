@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_sewa_pdf">
+        <t t-call="web.html_container">
+            <t t-call="web.internal_layout">
+            <!-- <t t-call="web.external_layout"> -->
+                <div class="page">
+                    <h1>Faktur Sewa</h1>
+                    <t t-foreach="docs" t-as="doc">
+                        <div class="row">
+                            <div class="col-4">Kode Sewa      :</div>
+                            <div class="col-8"><span t-field="doc.name"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">Tanggal Sewa      :</div>
+                            <div class="col-8"><span t-field="doc.tgl_sewa"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">Kode Penyewa     :</div>
+                            <div class="col-8"><span t-field="doc.penyewa_id"/></div>
+                        </div>
+                        <table class="table table-condensed table-bordered" style="border: 2px solid black !important;">
+                        <thead>
+                            <tr>
+                                <th>Merek</th>
+                                <th>Nopol Kendaraan</th>
+                                <th>Tanggal Mulai</th>
+                                <th>Tanggal Selesai</th>
+                                <th>Total Biaya Sewa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-as="sewadetail" t-foreach="doc.sewadetail_ids">
+                                <td>
+                                    <span t-field="sewadetail.detailkendaraan_id"/>
+                                </td>
+                                <td>
+                                    <span t-field="sewadetail.kendaraan_id"/>
+                                </td>
+                                <td>
+                                    <span t-field="sewadetail.tgl_mulai"/>
+                                </td>
+                                <td>
+                                    <span t-field="sewadetail.tgl_selesai"/>
+                                </td>
+                                <td>
+                                    <span t-field="sewadetail.subtotal"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="istiqrental_kendaraan_view_tree" model="ir.ui.view">
+        <field name="name">istiqrental_kendaraan_view_tree</field>
+        <field name="model">istiqrental.kendaraan</field>
+        <field name="arch" type="xml">
+            <tree string="istiqrental_kendaraan_tree">
+                <field name="name"/>
+                <field name="tipe_kendaraan"/>
+                <field name="grupkendaraan_id"/>
+                <field name="kode_kendaraan"/>
+                <field name="biaya_sewa"/>
+                <field name="biaya_denda"/>
+                <field name="banyak_unit"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="istiqrental_kendaraan_view_form" model="ir.ui.view">
+        <field name="name">istiqrental_kendaraan_view_form</field>
+        <field name="model">istiqrental.kendaraan</field>
+        <field name="arch" type="xml">
+            <form string="istiqrental_kendaraan_form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="tipe_kendaraan"/>
+                        <field name="grupkendaraan_id"/>
+                        <field name="kode_kendaraan"/>
+                    </group>
+                    <group>
+                        <field name="biaya_sewa"/>
+                        <field name="biaya_denda"/>
+                        <field name="banyak_unit"/>
+                    </group>
+                    <notebook colspan="6">
+                        <page name="detailkendaraan" string="Detail Kendaraan">
+                            <field name="detailkendaraan_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="satuan"/>
+                                    <field name="no_mesin"/>
+                                    <field name="kapasitas"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="istiqrental_kendaraan_action" model="ir.actions.act_window">
+        <field name="name">Kendaraan</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">istiqrental.kendaraan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="istiqrental_kendaraan_menu_action"
+              name="Kendaraan"
+              parent="istiqrental_unit"
+              action="istiqrental_kendaraan_action"
+              sequence="30"/>
+</odoo>

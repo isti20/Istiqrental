@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_istiqrental_kendaraan,access.istiqrental.kendaraan,model_istiqrental_kendaraan,,1,1,1,1
+access_istiqrental_sewa,access.istiqrental.sewa,model_istiqrental_sewa,,1,1,1,1
+access_istiqrental_sewadetail,access.istiqrental.sewadetail,model_istiqrental_sewadetail,,1,1,1,1
+access_istiqrental_pengembalian,access.istiqrental.pengembalian,model_istiqrental_pengembalian,,1,1,1,1
+access_istiqrental_pengembaliandetail,access.istiqrental.pengembaliandetail,model_istiqrental_pengembaliandetail,,1,1,1,1
+access_istiqrental_penyewa,access.istiqrental.penyewa,model_istiqrental_penyewa,,1,1,1,1
+access_istiqrental_jaminan,access.istiqrental.jaminan,model_istiqrental_jaminan,,1,1,1,1
+access_istiqrental_detailkendaraan,access.istiqrental.detailkendaraan,model_istiqrental_detailkendaraan,,1,1,1,1
+access_istiqrental_grupkendaraan,access.istiqrental.grupkendaraan,model_istiqrental_grupkendaraan,,1,1,1,1

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="istiqrental_penyewa_view_tree" model="ir.ui.view">
+        <field name="name">istiqrental_penyewa_view_tree</field>
+        <field name="model">istiqrental.penyewa</field>
+        <field name="arch" type="xml">
+            <tree string="_tree">
+                <field name="name"/>
+                <field name="nama_penyewa"/>
+                <field name="gender"/>
+                <field name="no_ktp"/>
+                <field name="alamat"/>
+                <field name="no_tlp"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="istiqrental_penyewa_view_form" model="ir.ui.view">
+        <field name="name">istiqrental_penyewa_view_form</field>
+        <field name="model">istiqrental.penyewa</field>
+        <field name="arch" type="xml">
+            <form string="istiqrental_penyewa_form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="nama_penyewa"/>
+                        <field name="gender"/>
+                        <field name="no_ktp"/>
+                        <field name="alamat"/>
+                        <field name="no_tlp"/>
+                    </group>
+                     <notebook colspan="6">
+                        <page name="sewadetail" string="Sewa Detail">
+                            <field name="sewadetail_ids">
+                                <tree editable="bottom">
+                                    <field name="detailkendaraan_id"/>
+                                    <field name="kendaraan_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="istiqrental_penyewa_action" model="ir.actions.act_window">
+        <field name="name">Penyewa</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">istiqrental.penyewa</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="istiqrental_penyewa_menu_action"
+              name="Penyewa"
+              parent="istiqrental_root"
+              action="istiqrental_penyewa_action"
+              sequence="30"/>
+</odoo>

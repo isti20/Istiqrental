@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="istiqrental_sewa_view_tree" model="ir.ui.view">
+        <field name="name">istiqrental_sewa_view_tree</field>
+        <field name="model">istiqrental.sewa</field>
+        <field name="arch" type="xml">
+            <tree string="_tree">
+                <field name="name"/>
+                <field name="tgl_sewa"/>
+                <field name="penyewa_id"/>
+                <field name="jaminan_ids"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="istiqrental_sewa_view_form" model="ir.ui.view">
+        <field name="name">istiqrental_sewa_view_form</field>
+        <field name="model">istiqrental.sewa</field>
+        <field name="arch" type="xml">
+            <form string="istiqrental_sewa_form">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
+                    <button name="action_confirm" type="object" string="Confirm" states="draft"/>
+                    <button name="action_done" type="object" string="Done" states="confirm"/>
+                    <button name="action_cancel" type="object" string="Cancel" states="draft,confirm" confirm="Apakah anda yakin ingin membatalkan transaksi anda?"/>
+                    <button name="action_draft" type="object" string="Back to Draft" states="confirm" confirm="Anda yakin ingin mengembalikan transaksi ke draft?"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="tgl_sewa"/>
+                        <field name="penyewa_id"/>
+                        <field name="jaminan_id"/>
+                        <field name="total_bayar"/>
+                    </group>
+                    <notebook colspan="6">
+                        <page name="sewadetail" string="Sewa Detail">
+                            <field name="sewadetail_ids">
+                                <tree editable="bottom">
+                                    <field name="kendaraan_id"/>
+                                    <field name="detailkendaraan_id"/>
+                                    <field name="jml_unit"/>
+                                    <field name="tgl_mulai"/>
+                                    <field name="tgl_selesai"/>
+                                    <field name="jml_hari"/>
+                                    <field name="biaya_sewa"/>
+                                    <field name="subtotal" sum="subtotal"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="istiqrental_sewa_action" model="ir.actions.act_window">
+        <field name="name">Sewa</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">istiqrental.sewa</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="istiqrental_sewa_menu_action"
+              name="Sewa"
+              parent="istiqrental_transaksi"
+              action="istiqrental_sewa_action"
+              sequence="35"/>
+</odoo>

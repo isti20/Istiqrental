@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="istiqrental_admin_respartner_view_tree_inherit" model="ir.ui.view">
+        <field name="name">istiqrental_admin_respartner_view_tree_inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='email']" position="after">
+                <field name="no_ktp"/>
+                <field name="gender"/>
+                <field name="is_admin" attrs="{'invisible':[('is_kasir','=',True)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="istiqrental_admin_respartner_view_form_inherit" model="ir.ui.view">
+        <field name="name">istiqrental_admin_respartner_view_form_inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='vat']" position="before">
+                <field name="no_ktp"/>
+                <field name="gender"/>
+                <field name="is_admin" attrs="{'invisible':[('is_kasir','=',True)]}"/>
+                <field name="status_pegawai"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="respartner_admin_search_inherit" model="ir.ui.view">
+       <field name="name">respartner_admin_search_inherit</field>
+       <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <field name="parent_id" position="after">
+               <filter string="admin" name="adminnya" domain="[('is_admin', '=', True)]"/>
+           </field>
+       </field>
+    </record>
+
+    <record id="istiqrental_admin_respartner_action" model="ir.actions.act_window">
+        <field name="name">Admin</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{
+                'search_default_adminnya':1,
+                'default_is_admin':True,
+            }
+        </field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="istiqrental_admin_respartner_menu_action"
+              name="Admin"
+              parent="istiqrental_pegawai"
+              action="istiqrental_admin_respartner_action"
+              sequence="30"/>
+</odoo>
